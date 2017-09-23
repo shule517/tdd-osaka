@@ -7,9 +7,11 @@ class VendingMachine
 
   # vimの人きたああああ
   def insert_coin(amount)
-    @total += amount
+   @total += amount if enable_coin?(amount)
   end
 
-  # やばい こないだまでjs書いてたら 変なくせがのこってる
+  def enable_coin?(amount)
+    [10, 50, 100, 500, 1000].include?(amount)
+  end
 end
 
