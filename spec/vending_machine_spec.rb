@@ -8,6 +8,10 @@ describe VendingMachine do
       expect(machine.total).to eq 10
     end
     it '複数枚コインを投入した場合、合計金額が一致すること' do
+      machine.insert_coin(10, 50, 100, 500, 1000)
+      expect(machine.total).to eq 1660
+    end
+    it '複数枚コインを投入した場合、合計金額が一致すること' do
       [10, 50, 100, 500, 1000].each do |amount|
         machine.insert_coin(amount)
       end
@@ -38,5 +42,11 @@ describe VendingMachine do
        expect(machine.stock).to eq name: 'コーラ', price: 120, quantity: 5
     end
   end
+
+#  describe 'buyable?' do
+#    it '' do
+#      machine.insert_coin(100)
+#    end
+#  end
 end
 

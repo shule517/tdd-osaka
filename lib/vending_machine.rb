@@ -6,8 +6,10 @@ class VendingMachine
     @stock = { name: 'コーラ', price: 120, quantity: 5 }
   end
 
-  def insert_coin(amount)
-    @total += amount if enable_coin?(amount)
+  def insert_coin(*coins)
+    coins.each do |amount|
+      @total += amount if enable_coin?(amount)
+    end
   end
 
   def enable_coin?(amount)
