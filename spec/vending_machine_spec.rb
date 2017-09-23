@@ -38,8 +38,8 @@ describe VendingMachine do
   end
 
   describe '#stock' do
-    it '初期状態の場合、コーラが格納されていること' do
-       expect(machine.stock).to eq cola: { price: 120, quantity: 5 }
+    it '初期状態の場合、コーラが５つ格納されていること' do
+       expect(machine.stock).to eq cola: 5
     end
   end
 

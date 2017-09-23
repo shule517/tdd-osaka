@@ -1,9 +1,10 @@
 class VendingMachine
-  attr_reader :total, :stock
+  attr_reader :total
 
   def initialize
     @total = 0
-    @stock = { cola: { price: 120, quantity: 5 } }
+    @stock = Stock.new
+    @prices = { cola: 120 }
   end
 
   def insert_coin(*coins)
@@ -12,13 +13,20 @@ class VendingMachine
     end
   end
 
+  def stock
+    @stock.juices
+  end
+
   def enable_coin?(amount)
     [10, 50, 100, 500, 1000].include?(amount)
   end
 
   def buyable?(name, quantity)
-    juice = stock[name]
-    juice[:price] * quantity <= @total && juice[:quantity] >= quantity
+    buy_amount(name, quantity) <= @total && @stock.buyable?(name, quantity)
+  end
+
+  def buy_amount(name, quantity)
+    @prices[name] * quantity
   end
 end
 
