@@ -32,5 +32,11 @@ describe VendingMachine do
       end
     end
   end
+
+  describe '#stock' do
+    it '初期状態の場合、コーラが格納されている' do
+       expect(machine.stock).to eq name: 'コーラ', price: 120, quantity: 5
+    end
+  end
 end
 

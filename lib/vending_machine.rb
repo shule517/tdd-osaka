@@ -1,13 +1,13 @@
 class VendingMachine
-  attr_reader :total
+  attr_reader :total, :stock
 
   def initialize
     @total = 0
+    @stock = { name: 'コーラ', price: 120, quantity: 5 }
   end
 
-  # vimの人きたああああ
   def insert_coin(amount)
-   @total += amount if enable_coin?(amount)
+    @total += amount if enable_coin?(amount)
   end
 
   def enable_coin?(amount)
